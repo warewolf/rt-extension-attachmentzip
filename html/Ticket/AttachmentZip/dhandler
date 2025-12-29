@@ -6,7 +6,7 @@ my ($mode,$ticket_no) = ($m->dhandler_arg =~ m/^((?:all|current))\/(\d+)\//i );
 my $Ticket = LoadTicket($ticket_no);
 
 # collect individual attached files in a hash of arrays
-my $AttachObj = $m->comp('/Ticket/Elements/FindAttachments', Ticket => $Ticket);
+my $AttachObj = $Ticket->Attachments;
 my %attached_files;
 while (my $attached_name = $AttachObj->Next() ) {
   next unless ($attached_name->Filename());
